@@ -128,15 +128,15 @@ func Run_Robot(ip_port string) error {
 
 	myServer := &robotServer{}
 	/*
-	   见 service.pb.go 中
-	   func RegisterMaxSizeServer(s *grpc.Server, srv MaxSizeServer) {
-	       s.RegisterService(&_MaxSize_serviceDesc, srv)
-	   }
-	   前者是 grpc server，后者是实现了 MaxSizeServer 所有 interface 的实例，即 &server{}
+	   见 go_robot.pb.go 中
+	func RegisterGoRobotServer(s *grpc.Server, srv GoRobotServer) {
+		s.RegisterService(&_GoRobot_serviceDesc, srv)
+	}
+	   前者是 grpc server，后者是实现了 GoRobotServer 所有 interface 的实例，即 &robotServer{}
 
 	   感觉就是将 grpc server 和 handler 绑定在了一起的意思。
 
-	   RegisterMaxSizeServer 的命名很有意思，Register(固定) + MaxSize(service MaxSize {} in proto 文件) + Server(固定)
+	   RegisterGoRobotServer 的命名很有意思，Register(固定) + MouseXXX(service MouseXXX {} in proto 文件) + Server(固定)
 
 	*/
 	pb.RegisterGoRobotServer(s, myServer)
